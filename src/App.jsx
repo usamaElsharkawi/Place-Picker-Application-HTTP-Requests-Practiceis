@@ -7,29 +7,21 @@ import Error from "./components/Error.jsx";
 import logoImg from "./assets/logo.png";
 import AvailablePlaces from "./components/AvailablePlaces.jsx";
 import { updatedUserPlaces, fetchUserPlaces } from "./http.js";
+import { useFetch } from "./hooks/useFetch.js";
 
 function App() {
   const selectedPlace = useRef();
 
-  const [userPlaces, setUserPlaces] = useState([]);
-  const [isfetching, setIsFetching] = useState(false);
-  const [error, setError] = useState();
+  /* Custom Hook for fetching user places */
+  const {
+    isFetching: isfetching,
+    error,
+    fetchedData: userPlaces,
+    setFetchedData: setUserPlaces,
+  } = useFetch(fetchUserPlaces, []);
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [errorUpdatingPlaces, setErrorUpdatingPlaces] = useState();
-
-  useEffect(() => {
-    async function fetchPlaces(params) {
-      setIsFetching(true);
-      try {
-        const userPlaces = await fetchUserPlaces();
-        setUserPlaces(userPlaces);
-      } catch (error) {
-        setError({ message: error.message || "can't fetch user places" });
-      }
-      setIsFetching(false);
-    }
-    fetchPlaces();
-  }, []);
 
   function handleStartRemovePlace(place) {
     setModalIsOpen(true);
@@ -115,7 +107,7 @@ function App() {
         </p>
       </header>
       <main>
-        {error  ? (
+        {error ? (
           <Error title="An Error Occurred" message={error.message} />
         ) : (
           <Places

@@ -45,6 +45,16 @@ _(See learning_materials folder for detailed Event Loop diagrams)_
 
 ---
 
+### 4. Custom React Hooks
+
+- **The "Why":** Moving **Stateful Logic** (State + Effects) out of components to make them reusable and clean.
+- **The "Brain" vs. "Body":** Separation of Logic (Hook) from UI (Component).
+- **Internal Mechanics:** Understanding that Hooks rely on React's internal **linked list** order, which is why the "Rules of Hooks" exist.
+- **Refactoring:** Created `useFetch` to handle the `Loading`, `Error`, and `Data` states centrally, removing 5+ lines of boilerplate from every component.
+- **Promise Wrapping:** Combining Async Fetch with Async Geolocation into a single `Promise` to enable a unified loading state.
+
+---
+
 ## ✨ Special Acknowledgements
 
 > Concepts in this project were deeply understood and visualized with the help of **Google Antigravity**, utilizing **Gemini 3** and **Nano Banana** technology. 🍌🚀
