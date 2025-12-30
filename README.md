@@ -45,6 +45,12 @@ _(See learning_materials folder for detailed Event Loop diagrams)_
 
 ---
 
+## ✨ Special Acknowledgements
+
+> Concepts in this project were deeply understood and visualized with the help of **Google Antigravity**, utilizing **Gemini 3** and **Nano Banana** technology. 🍌🚀
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Frontend:** React (Vite)
